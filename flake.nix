@@ -18,6 +18,13 @@
 				inherit system;
 			};
 		in rec {
+			packages = {
+				default = pkgs.poetry2nix.mkPoetryApplication { projectDir = self; };
+			};
+			apps.default = {
+				type = "app";
+				program = "${self.packages.${system}.default}/bin/sysfetch";
+			};
 			devShells.default = pkgs.mkShell {
 				buildInputs = with pkgs; [
 					python3
