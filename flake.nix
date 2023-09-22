@@ -12,13 +12,14 @@
 		};
 
 	};
-	outputs = {self, nixpkgs, flake-utils, ... }: flake-utils.lib.eachDefaultSystem (system:
+	outputs = {self, nixpkgs, flake-utils, ... }: 
 		let
+			system = "x86_64-linux";
 			pkgs = import nixpkgs {
 				inherit system;
 			};
 		in rec {
-			packages = {
+			packages.${system} = {
 				default = pkgs.poetry2nix.mkPoetryApplication { projectDir = self; };
 			};
 			apps = rec {
@@ -34,6 +35,5 @@
 					poetry
 				];
 			};
-		}
-	);
+		};
 }
