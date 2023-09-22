@@ -21,9 +21,12 @@
 			packages = {
 				default = pkgs.poetry2nix.mkPoetryApplication { projectDir = self; };
 			};
-			apps.${system}.default = {
-				type = "app";
-				program = "${self.packages.${system}.default}/bin/sysfetch";
+			apps = rec {
+				sysFetch = {
+					type = "app";
+					program = "${self.packages.${system}.default}/bin/sysfetch";
+				};
+				default = sysFetch;
 			};
 			devShells.default = pkgs.mkShell {
 				buildInputs = with pkgs; [
