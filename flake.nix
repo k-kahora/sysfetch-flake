@@ -21,7 +21,7 @@
 			packages = {
 				default = pkgs.poetry2nix.mkPoetryApplication { projectDir = self; };
 			};
-			apps.default = {
+			apps.${system}.default = {
 				type = "app";
 				program = "${self.packages.${system}.default}/bin/sysfetch";
 			};
