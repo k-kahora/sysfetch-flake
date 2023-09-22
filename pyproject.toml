@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "sysfetch"
+version = "0.1.0"
+description = "Fetch system attributes"
+authors = ["Your Name <you@example.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+tqdm = "^4.66.1"
+psutil = "^5.9.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+sysfetch = "sysfetch:main"
